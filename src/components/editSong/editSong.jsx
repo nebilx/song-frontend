@@ -15,13 +15,18 @@ export default function UpdateSong() {
     artist: "",
     genre: "",
   });
+  const message = useSelector((state) => state.song.message);
+
+  useEffect(() => {
+    if (message !== "") navigator("/");
+  }, [message]);
 
   useEffect(() => {
     dispatch(getGenre());
   }, [dispatch]);
 
   useEffect(() => {
-    const songs = songList.data && songList.data.find((s) => s._id == id);
+    const songs = songList && songList.find((s) => s._id === id);
     if (songs) {
       setSong({
         title: songs.title,

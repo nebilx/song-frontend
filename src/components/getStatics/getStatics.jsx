@@ -17,11 +17,11 @@ export default function Statics() {
 
   return (
     <div>
-      <h1>no sound album</h1>
+      <h1>no Song album</h1>
       {statics?.data &&
         statics?.data.noSongAlbum.map((data, i) => (
           <div key={i}>
-            <h1> {data.genre}</h1>
+            <h1> {data.album}</h1>
             <h1>{data.totalSongs}</h1>
           </div>
         ))}

@@ -6,7 +6,6 @@ export default function AddSong() {
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const genre = useSelector((state) => state.song.genre);
-  const message = useSelector((state) => state.song.message);
 
   const [song, setSong] = useState({
     title: "",
@@ -15,7 +14,11 @@ export default function AddSong() {
     genre: "",
   });
 
-  if (message) console.log(message.data.message);
+  const message = useSelector((state) => state.song.message);
+
+  useEffect(() => {
+    if (message !== "") navigator("/");
+  }, [message]);
 
   useEffect(() => {
     dispatch(getGenre());

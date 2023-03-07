@@ -7,6 +7,12 @@ export default function Song() {
   const song = useSelector((state) => state.song.data);
   const navigate = useNavigate();
 
+  const message = useSelector((state) => state.song.message);
+
+  useEffect(() => {
+    if (message !== "") navigator("/");
+  }, [message]);
+
   useEffect(() => {
     dispatch(getSong());
   }, [dispatch]);
