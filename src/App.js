@@ -5,8 +5,6 @@ import AddSong from "./components/addSong/addSong";
 import Navbar from "./components/navbar/navar";
 import Song from "./components/getSong/getSong";
 import Statics from "./components/getStatics/getStatics";
-import styled from "@emotion/styled";
-import Header from "./components/header/header";
 function App() {
   return (
     <BrowserRouter>

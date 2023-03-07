@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getGenre, addSong } from "../../redux/store/slice/song.slice";
+import { Label, Container, Input, Button, Head } from "../index.styled";
 export default function AddSong() {
   const dispatch = useDispatch();
   const navigator = useNavigate();
@@ -25,37 +26,36 @@ export default function AddSong() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1> Add Song</h1>
-      <label htmlFor="title">title</label>
+    <Container>
+      <Head> Add Song</Head>
+      <Label htmlFor="title">Name</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="title"
         onChange={(e) => setSong({ ...song, title: e.target.value })}
         placeholder="Song Name"
-      ></input>
+      ></Input>
       <br />
-      <label htmlFor="artist">Artist</label>
+      <Label htmlFor="artist">Artist</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="artist"
         onChange={(e) => setSong({ ...song, artist: e.target.value })}
         placeholder="Artist Name"
-      ></input>
+      ></Input>
       <br />
-      <label htmlFor="album">album</label>
+      <Label htmlFor="album">album</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="album"
         onChange={(e) => setSong({ ...song, album: e.target.value })}
         placeholder="Album Name"
-      ></input>
+      ></Input>
       <br />
-      <br />
-      <label htmlFor="genre">Choose a Genre:</label>
+      <Label htmlFor="genre">Choose a Genre:</Label>
       <br />
 
       <select
@@ -74,15 +74,16 @@ export default function AddSong() {
           ))}
       </select>
       <br />
+      <br />
 
-      <button
+      <Button
         type="button"
         onClick={() => {
           dispatch(addSong({ data: song }));
         }}
       >
         Add
-      </button>
-    </div>
+      </Button>
+    </Container>
   );
 }

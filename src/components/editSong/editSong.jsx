@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getGenre, editSong } from "../../redux/store/slice/song.slice";
-
+import { Label, Container, Input, Button, Head } from "../index.styled";
 export default function UpdateSong() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -38,39 +38,39 @@ export default function UpdateSong() {
   }, [songList]);
 
   return (
-    <div>
-      <h1> Update Song</h1>
-      <label htmlFor="title">title</label>
+    <Container>
+      <Head> Update Song</Head>
+      <Label htmlFor="title">title</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="title"
         value={song.title}
         onChange={(e) => setSong({ ...song, title: e.target.value })}
         placeholder="Song Name"
-      ></input>
+      ></Input>
       <br />
-      <label htmlFor="artist">Artist</label>
+      <Label htmlFor="artist">Artist</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="artist"
         value={song.artist}
         onChange={(e) => setSong({ ...song, artist: e.target.value })}
         placeholder="Artist Name"
-      ></input>
+      ></Input>
       <br />
-      <label htmlFor="album">album</label>
+      <Label htmlFor="album">album</Label>
       <br />
-      <input
+      <Input
         type="text"
         name="album"
         value={song.album}
         onChange={(e) => setSong({ ...song, album: e.target.value })}
         placeholder="Album Name"
-      ></input>
+      ></Input>
       <br />
-      <label htmlFor="genre">Choose a Genre:</label>
+      <Label htmlFor="genre">Choose a Genre:</Label>
       <br />
 
       <select
@@ -90,14 +90,14 @@ export default function UpdateSong() {
       </select>
       <br />
 
-      <button
+      <Button
         type="button"
         onClick={() => {
           dispatch(editSong({ id: id, data: song }));
         }}
       >
         Update
-      </button>
-    </div>
+      </Button>
+    </Container>
   );
 }
