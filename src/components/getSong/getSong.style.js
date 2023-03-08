@@ -3,7 +3,7 @@ export const Container = styled.div`
   background-color: #474747;
   border-radius: 5%;
   padding: 5%;
-  max-width: 700px;
+  max-width: 1000px;
   margin: auto;
   color: white;
 `;
