@@ -22,12 +22,15 @@ const songSlice = createSlice({
     },
     setSong(state, action) {
       state.data = action.payload;
+      state.isLoading = false;
     },
     setStatics(state, action) {
       state.statics = action.payload;
+      state.isLoading = false;
     },
     setGenre(state, action) {
       state.genre = action.payload;
+      state.isLoading = false;
     },
     addSong(state) {
       state.isLoading = true;
@@ -37,6 +40,10 @@ const songSlice = createSlice({
     },
     deleteSong(state) {
       state.isLoading = true;
+    },
+
+    setIsLoading(state) {
+      state.isLoading = false;
     },
 
     //success message
@@ -59,6 +66,7 @@ export const {
   setGenre,
   setMessage,
   setError,
+  setIsLoading,
   addSong,
   editSong,
   deleteSong,

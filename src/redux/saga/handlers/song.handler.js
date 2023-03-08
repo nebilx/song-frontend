@@ -1,9 +1,11 @@
 import { call, put } from "redux-saga/effects";
 import {
+  getSong,
   setSong,
   setStatics,
   setGenre,
   setError,
+  setIsLoading,
   setMessage,
 } from "../../store/slice/song.slice";
 import { request } from "../requests/song.requests";
@@ -11,8 +13,9 @@ import { request } from "../requests/song.requests";
 export function* handleGetSong(action) {
   try {
     const song = yield call(request.getSong);
-    yield put(setSong(song.data));
+    yield put(setSong(song.data.data));
   } catch (error) {
+    yield put(setIsLoading());
     yield put(setError(error));
   }
 }
@@ -20,11 +23,11 @@ export function* handleGetSong(action) {
 export function* handleGetStatics(action) {
   try {
     const statics = yield call(request.getStatics);
-    // console.log(statics.data);
 
     yield put(setStatics(statics.data));
   } catch (error) {
-    yield put(setError(error));
+    yield put(setIsLoading());
+    yield put(setError(error.response.data));
   }
 }
 
@@ -33,16 +36,19 @@ export function* handleGetGenre(action) {
     const genre = yield call(request.getGenre);
     yield put(setGenre(genre.data));
   } catch (error) {
-    yield put(setError(error));
+    yield put(setIsLoading());
+    yield put(setError(error.response.data));
   }
 }
 
 export function* handleAddSong(action) {
   try {
     const song = yield call(request.addSong, action.payload.data);
-    yield put(setMessage(song));
+
+    yield put(setMessage(song.data.message));
   } catch (error) {
-    yield put(setError(error));
+    yield put(setIsLoading());
+    yield put(setError(error.response.data));
   }
 }
 
@@ -53,17 +59,21 @@ export function* handleEditSong(action) {
       action.payload.id,
       action.payload.data
     );
-    yield put(setMessage(song));
+
+    yield put(setMessage(song.data.message));
   } catch (error) {
-    yield put(setError(error));
+    yield put(setIsLoading());
+    yield put(setError(error.response.data));
   }
 }
 
 export function* handleDeleteSong(action) {
   try {
     const song = yield call(request.deleteSong, action.payload.id);
-    yield put(setMessage(song));
+    yield put(setMessage(song.data.message));
+    yield put(getSong());
   } catch (error) {
-    yield put(setError(error));
+    yield put(setIsLoading());
+    yield put(setError(error.response.data));
   }
 }

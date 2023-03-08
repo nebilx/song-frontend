@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 export const Container = styled.div`
   width: 85%;
   max-width: 1280px;
   margin: 0 auto;
-  height: 100vh;
+  height: 150px;
   min-height: 100%;
   @media (max-width: 1100px) {
     height: 100%;
@@ -45,37 +46,42 @@ export const Logo = styled.div`
   }
 `;
 
-export const Nav = styled.div`
+export const NavLink = styled(Link)`
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  position: relative;
+  :before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    height: 2px;
+    transform: scale(0);
+    transform-origin: right;
+    transition: transform 400ms ease-in-out;
+  }
+  :hover {
+    opacity: 0.7;
+  }
+  :hover:before {
+    transform: scale(1);
+    transform-origin: left;
+  }
+`;
+
+export const Nav = styled.nav`
   background-color: gray;
-  padding: 10px;
+  padding: 15px;
   margin: 10px;
   border-radius: 10px;
-  a {
-    margin-left: 1rem;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 400;
-    position: relative;
-    :before {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      height: 2px;
-      transform: scale(0);
-      transform-origin: right;
-      transition: transform 400ms ease-in-out;
-    }
-    :hover {
-      opacity: 0.7;
-    }
-    :hover:before {
-      transform: scale(1);
-      transform-origin: left;
-    }
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   @media (max-width: 650px) {
     background-color: #595959;
     position: absolute;

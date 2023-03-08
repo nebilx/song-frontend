@@ -1,5 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
-import { Container, Content, Logo, Nav, Bar } from "./navbar.style";
+import { Container, Content, Logo, Nav, Bar, NavLink } from "./navbar.style";
 import { BsMusicNoteList } from "react-icons/bs";
 import { useState } from "react";
 const Navbar = () => {
@@ -14,17 +13,9 @@ const Navbar = () => {
           <h1>Song</h1>
         </Logo>
         <Nav bar={bar}>
-          <a>
-            <Link to="/">Songs</Link>
-          </a>
-          <a>
-            {" "}
-            <Link to="/add">Add Song</Link>{" "}
-          </a>
-          <a>
-            {" "}
-            <Link to="/statics">Statics</Link>{" "}
-          </a>
+          <NavLink to="/">Songs</NavLink>
+          <NavLink to="/add">Add Song</NavLink>{" "}
+          <NavLink to="/statics">Statics</NavLink>{" "}
         </Nav>
         <Bar bar={bar} onClick={() => setBar(!bar)}>
           <span className="active"></span>

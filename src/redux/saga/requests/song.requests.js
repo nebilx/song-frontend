@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://song-backend-0cjf.onrender.com/";
 export const request = {
   getSong: () =>
     axios.request({
