@@ -22,15 +22,12 @@ const songSlice = createSlice({
     },
     setSong(state, action) {
       state.data = action.payload;
-      state.isLoading = false;
     },
     setStatics(state, action) {
       state.statics = action.payload;
-      state.isLoading = false;
     },
     setGenre(state, action) {
       state.genre = action.payload;
-      state.isLoading = false;
     },
     addSong(state) {
       state.isLoading = true;

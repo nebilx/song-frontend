@@ -14,6 +14,7 @@ export function* handleGetSong(action) {
   try {
     const song = yield call(request.getSong);
     yield put(setSong(song.data.data));
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error));
@@ -23,8 +24,8 @@ export function* handleGetSong(action) {
 export function* handleGetStatics(action) {
   try {
     const statics = yield call(request.getStatics);
-
     yield put(setStatics(statics.data));
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error.response.data));
@@ -35,6 +36,7 @@ export function* handleGetGenre(action) {
   try {
     const genre = yield call(request.getGenre);
     yield put(setGenre(genre.data));
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error.response.data));
@@ -44,8 +46,8 @@ export function* handleGetGenre(action) {
 export function* handleAddSong(action) {
   try {
     const song = yield call(request.addSong, action.payload.data);
-
     yield put(setMessage(song.data.message));
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error.response.data));
@@ -59,8 +61,9 @@ export function* handleEditSong(action) {
       action.payload.id,
       action.payload.data
     );
-
     yield put(setMessage(song.data.message));
+    yield put(getSong());
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error.response.data));
@@ -72,6 +75,7 @@ export function* handleDeleteSong(action) {
     const song = yield call(request.deleteSong, action.payload.id);
     yield put(setMessage(song.data.message));
     yield put(getSong());
+    yield put(setIsLoading());
   } catch (error) {
     yield put(setIsLoading());
     yield put(setError(error.response.data));

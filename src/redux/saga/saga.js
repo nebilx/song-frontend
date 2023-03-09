@@ -1,4 +1,4 @@
-import { fork, all, takeEvery } from "redux-saga/effects";
+import { fork, all, takeEvery, takeLatest } from "redux-saga/effects";
 
 import {
   getSong,
@@ -19,14 +19,14 @@ import {
 } from "./handlers/song.handler";
 
 function* getSongSaga() {
-  yield takeEvery(getSong.type, handleGetSong);
+  yield takeLatest(getSong.type, handleGetSong);
 }
 
 function* getStaticsSaga() {
-  yield takeEvery(getStatics.type, handleGetStatics);
+  yield takeLatest(getStatics.type, handleGetStatics);
 }
 function* getGenreSaga() {
-  yield takeEvery(getGenre.type, handleGetGenre);
+  yield takeLatest(getGenre.type, handleGetGenre);
 }
 
 function* addSongSaga() {
