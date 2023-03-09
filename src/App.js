@@ -16,11 +16,13 @@ function App() {
   useEffect(() => {
     if (message !== "") toast.success(message);
     dispatch(setMessage(""));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
 
   useEffect(() => {
     if (error !== "") toast.error(error);
     dispatch(setError(""));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
   return (

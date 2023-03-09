@@ -21,10 +21,12 @@ export default function UpdateSong() {
 
   useEffect(() => {
     if (message !== "") navigator("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
 
   useEffect(() => {
     dispatch(getGenre());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -37,6 +39,7 @@ export default function UpdateSong() {
         genre: songs.genre,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

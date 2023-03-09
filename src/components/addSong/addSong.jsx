@@ -20,10 +20,12 @@ export default function AddSong() {
 
   useEffect(() => {
     if (message !== "") navigator("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [message]);
 
   useEffect(() => {
     dispatch(getGenre());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

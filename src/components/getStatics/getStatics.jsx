@@ -16,6 +16,7 @@ export default function Statics() {
 
   useEffect(() => {
     dispatch(getStatics());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
