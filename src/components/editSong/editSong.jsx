@@ -59,6 +59,9 @@ export default function UpdateSong() {
             value={song.title}
             onChange={(e) => setSong({ ...song, title: e.target.value })}
             placeholder="Song Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <br />
           <Label htmlFor="artist">Artist</Label>
@@ -69,6 +72,9 @@ export default function UpdateSong() {
             value={song.artist}
             onChange={(e) => setSong({ ...song, artist: e.target.value })}
             placeholder="Artist Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <br />
           <Label htmlFor="album">album</Label>
@@ -79,6 +85,9 @@ export default function UpdateSong() {
             value={song.album}
             onChange={(e) => setSong({ ...song, album: e.target.value })}
             placeholder="Album Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <br />
           <Label htmlFor="genre">Choose a Genre:</Label>

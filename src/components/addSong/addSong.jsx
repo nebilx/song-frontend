@@ -43,6 +43,9 @@ export default function AddSong() {
             name="title"
             onChange={(e) => setSong({ ...song, title: e.target.value })}
             placeholder="Song Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <Label htmlFor="artist">Artist</Label>
           <Input
@@ -50,6 +53,9 @@ export default function AddSong() {
             name="artist"
             onChange={(e) => setSong({ ...song, artist: e.target.value })}
             placeholder="Artist Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <Label htmlFor="album">album</Label>
           <Input
@@ -57,6 +63,9 @@ export default function AddSong() {
             name="album"
             onChange={(e) => setSong({ ...song, album: e.target.value })}
             placeholder="Album Name"
+            size="20"
+            maxLength="20"
+            required
           ></Input>
           <Label htmlFor="genre">Choose a Genre:</Label>
           <Select
